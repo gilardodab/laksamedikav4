@@ -8,7 +8,7 @@ use App\Models\Invoiceppn;
 use App\Models\Product;
 use App\Models\Invoice_detailppn;
 use App\Models\ProductDetail;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Pengirimanppn;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -58,9 +58,9 @@ class InvoiceppnController extends Controller
 
 
             ]);
-            Mail::to($invoiceppn->user->email)->send(new \App\Mail\PostMail($invoiceppn->customer->name, 'Laksa Medika Internusa', $invoiceppn->id));
-            Mail::to('laksatechno@gmail.com')->send(new \App\Mail\PostMail($invoiceppn->customer->name, 'Laksa Medika Internusa', $invoiceppn->id));
-            Mail::to('haryokodrajaddwi@gmail.com')->send(new \App\Mail\PostMail($invoiceppn->customer->name, 'Laksa Medika Internusa', $invoiceppn->id));
+            // Mail::to($invoiceppn->user->email)->send(new \App\Mail\PostMail($invoiceppn->customer->name, 'Laksa Medika Internusa', $invoiceppn->id));
+            // Mail::to('laksatechno@gmail.com')->send(new \App\Mail\PostMail($invoiceppn->customer->name, 'Laksa Medika Internusa', $invoiceppn->id));
+            // Mail::to('haryokodrajaddwi@gmail.com')->send(new \App\Mail\PostMail($invoiceppn->customer->name, 'Laksa Medika Internusa', $invoiceppn->id));
 
             return redirect(route('invoiceppn.edit', ['id' => $invoiceppn->id]));
         } catch (\Exception $e) {
@@ -184,12 +184,22 @@ class InvoiceppnController extends Controller
 
     public function generateInvoice($id)
     {
-        //GET DATA BERDASARKAN ID
+        // //GET DATA BERDASARKAN ID
+        // $invoiceppn = Invoiceppn::with(['customer', 'detailppn', 'detailppn.product_detail.product'])->find($id);
+        // //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        // //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        // $pdf = PDF::loadView('invoiceppn.print', compact('invoiceppn'))->setPaper('a4', 'potrait');
+        // return $pdf->stream();
         $invoiceppn = Invoiceppn::with(['customer', 'detailppn', 'detailppn.product_detail.product'])->find($id);
-        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
-        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
-        $pdf = PDF::loadView('invoiceppn.print', compact('invoiceppn'))->setPaper('a4', 'potrait');
-        return $pdf->stream();
+        // Format nomor invoice
+        $noInvoice = 'INVOICEPPN-' . $invoiceppn->no_faktur_2023;
+        // Nama customer
+        $customerName = str_replace(' ', '_', $invoiceppn->customer->name);
+        // Nama file PDF dengan nomor invoice dan nama customer
+        $fileName = $noInvoice . '_' . $customerName . '.pdf';
+        $pdf = PDF::loadView('invoiceppn.print', compact('invoiceppn'))->setPaper('a4', 'portrait');
+        // Untuk menampilkan PDF di browser
+        return $pdf->stream($fileName);
     }
     public function generateInvoice2($id)
     {

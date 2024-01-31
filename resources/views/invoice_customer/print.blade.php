@@ -36,7 +36,8 @@
         td, tr, th{
             padding:5px;
             border:1px solid #333;
-            width:100px;
+            /*width:100px;*/
+            width:auto;
         }
         th{
             background-color: #fff;
@@ -79,6 +80,8 @@
                     <th colspan="1">Marketing#{{ $invoicecustomer->marketing }}</th>
                 </tr>
             </thead>
+        </table><br>
+        <table>
             <tbody>
                 <tr>
                     <th align ="center">Product</th>
@@ -90,9 +93,9 @@
                 @foreach ($invoicecustomer->detail_customer as $row)
                 <tr>
                     <td>{{ $row->product_customer_detail->product->title }}</td>
-                    <td align ="right">Rp {{ number_format($row->price) }}</td>
+                    <td align ="left">Rp {{ number_format($row->price) }}</td>
                     <td align ="center">{{ $row->qty }}</td>
-                    <td align ="right">Rp {{ number_format($row->diskon) }}</td>
+                    <td align ="left">Rp {{ number_format($row->diskon) }}</td>
                     <td align ="right">Rp {{ $row->subtotal }}</td>
                 </tr>
                 @endforeach
@@ -301,7 +304,7 @@
             </tr>
              <tr>
                     <td colspan="1" align="center"><br><br>(....................)</td>
-                    <td colspan="2" align="center"><br><br>(Dwi)</td>
+                    <td colspan="2" align="center"><br><br>(Tara)</td>
             </tr>
             </tfoot>
             
@@ -347,7 +350,7 @@
             </tr>
              <tr>
                     <td colspan="1" align="center"><br><br>( Drajad )</td>
-                    <td colspan="2" align="center"><br><br>(Dwi)</td>
+                    <td colspan="2" align="center"><br><br>(Tara)</td>
             </tr>
             </tfoot>
             

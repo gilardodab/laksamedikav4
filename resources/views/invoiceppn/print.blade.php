@@ -36,7 +36,8 @@
         td, tr, th{
             padding:5px;
             border:1px solid #333;
-            width:100px;
+            /*width:100px;*/
+            width:auto;
         }
         th{
             background-color: #fff;
@@ -52,7 +53,9 @@
     <div class="container">
         <table>
             <caption>
-                 <img align="left" src="{{ URL::asset('assets/images/logo_ptlmi.png')}}" width="150px" height="30px"><br>
+                 <!--<img align="left" src="{{ URL::asset('assets/images/logo_ptlmi.png')}}" width="150px" height="30px"><br>-->
+                 <img align="left" src="{{ URL::asset('assets/images/logoptlmi.png')}}" width="185px" height="30px"><br>
+                 
                  FAKTUR
             </caption>
             <thead>
@@ -79,6 +82,8 @@
                     <th colspan="1">Marketing#{{ $invoiceppn->user->name }}</th>
                 </tr>
             </thead>
+                    </table><br>
+        <table>
             <tbody>
                 <tr>
                     <th align ="center">Product</th>
@@ -118,7 +123,7 @@
             </tr>
              <tr>
                     <td colspan="2" align="center"><br>(....................)</td>
-                    <td colspan="3" align="center"><br>(Fatma WA)</td>
+                    <td colspan="3" align="center"><br>(Fatmawaty Aripin)</td>
             </tr>
             </tfoot>
         </table>
@@ -134,7 +139,8 @@
             <thead>
                 <tr>
                     <th colspan="5">
-                    <img align="left" src="{{ URL::asset('assets/images/logo_ptlmi.png')}}" width="150px" height="30px">
+                    <!--<img align="left" src="{{ URL::asset('assets/images/logo_ptlmi.png')}}" width="150px" height="30px">-->
+                    <img align="left" src="{{ URL::asset('assets/images/logoptlmi.png')}}" width="185px" height="30px"><br>
                     <p align="right">
                         Pelem Lor No. 50 Baturetno, Banguntapan<br>
                         Bantul, DI. Yogyakarta. Telp/Fax +622742842046
@@ -173,7 +179,7 @@
             </tr>
              <tr>
                     <td colspan="2" align="center"><br><br>(....................)</td>
-                    <td colspan="3" align="center"><br><br>(Fatma WA)</td>
+                    <td colspan="3" align="center"><br><br>(Fatmawaty Aripin)</td>
             </tr>
             </tfoot>
         </Table>
@@ -182,7 +188,9 @@
     <div class="page_break">
         <table>
             <tr>
-                    <img align="left" src="{{ URL::asset('assets/images/logo_ptlmi.png')}}" width="150px" height="30px">
+                    <!--<img align="left" src="{{ URL::asset('assets/images/logo_ptlmi.png')}}" width="150px" height="30px">-->
+                    <img align="left" src="{{ URL::asset('assets/images/logoptlmi.png')}}" width="185px" height="30px"><br>
+
                     <p align="right">
                         Pelem Lor No. 50 Baturetno, Banguntapan<br>
                         Bantul, DI. Yogyakarta. Telp/Fax +622742842046
@@ -240,11 +248,11 @@
                         <span><b>Rp {{ number_format(floor($invoiceppn->total_price)) }}</b></span>
                     </p>
                     <p align="right" style="font-size: 14px; margin:5px; height:5%">
-                        Yogyakarta,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Laksa Internusa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Yogyakarta,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>PT. Laksa Medika Internusa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <!--{{ $invoiceppn->created_at->format('D, d M Y') }}-->
                     </p><br><br><br><br><br>
                     <p align="right" style="font-size: 14px; margin:5px;">
-                        (Fatma WA)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        (Fatmawaty Aripin)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
             </tr>
         </table>
@@ -255,7 +263,9 @@
             <thead>
             <tr>
             <th colspan="3">
-                <img align="left" src="{{ URL::asset('assets/images/logo_ptlmi.png')}}" width="150px" height="30px">
+                
+                <!--<img align="left" src="{{ URL::asset('assets/images/logo_ptlmi.png')}}" width="150px" height="30px">-->
+                <img align="left" src="{{ URL::asset('assets/images/logoptlmi.png')}}" width="185px" height="30px"><br>
                     <p align="right">
                         No. 00{{ $invoiceppn->no_faktur_2023}}/SJB/
                         <?php
@@ -301,7 +311,7 @@
             </tr>
              <tr>
                     <td colspan="1" align="center"><br><br>(....................)</td>
-                    <td colspan="2" align="center"><br><br>(Dwi)</td>
+                    <td colspan="2" align="center"><br><br>(Puspita Tara Wahyuningsih)</td>
             </tr>
             </tfoot>
             
@@ -346,8 +356,8 @@
                     {{-- {{ date('d F Y') }} --}}
             </tr>
              <tr>
-                    <td colspan="1" align="center"><br><br>( Santok )</td>
-                    <td colspan="2" align="center"><br><br>(Dwi)</td>
+                    <td colspan="1" align="center"><br><br>( Drajad Dwi Haryoko )</td>
+                    <td colspan="2" align="center"><br><br>(Puspita Tara Wahyuningsih)</td>
             </tr>
             </tfoot>
             

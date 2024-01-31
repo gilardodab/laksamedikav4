@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@include('layouts.topNavBack')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -9,16 +10,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <b class="card-title">Penawaran</b>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="{{ url('/penawaran/new') }}" class="btn btn-primary btn-sm float-right">Add Penawaran</a>
-                            </div>
-                            <div class="col-md-6">
-                                <form action="{{ route('cari.penawaran') }}" method="GET" class="form-inline">
-                                  <input class="form-control mr-sm-2" name="cari" type="search" placeholder="Search" aria-label="Search" value="{{ old('cari') }}">
-                                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                </form>
-                            </div>                       
+                            </div>                      
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -28,13 +20,16 @@
                                 {!! session('success') !!}
                             </div>
                         @endif
-                        <table class="table table-hover table-bordered">
+                        <div class="col-md-6">
+                            <a href="{{ url('/penawaran/new') }}" class="btn btn-primary btn-sm float-right"><i class="mdi mdi-plus-box mdi-18px"></i>Penawaran</a>
+                        </div>
+                        <table class="table table-hover table-bordered" id="penawaran-table" class="table" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>Customer</th>
                                     <th>Perihal</th>
                                     <th>No HP MKT</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

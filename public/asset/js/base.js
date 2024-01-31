@@ -17,11 +17,80 @@ $(document).ready(function () {
 });
 ///////////////////////////////////////////////////////////////////////////
 
+
 // datatable
 $(document).ready(function () {
     $('#barang-table').DataTable({
     "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
         "iDisplayLength": 5
+    })
+});
+$(document).ready(function () {
+    $('#lapbarang-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5
+    })
+});
+$(document).ready(function () {
+    $('#penawaran-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5
+    })
+});
+$(document).ready(function () {
+    $('#invoiceppn-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5,
+        "order": [[ 0, "desc" ]]
+    })
+});
+$(document).ready(function () {
+    $('#customers-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5,
+        "order": [[ 0, "desc" ]]
+    })
+});
+$(document).ready(function () {
+    $('#dailyreport-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5,
+        "order": [[ 0, "desc" ]]
+    })
+});
+$(document).ready(function () {
+    $('#invoice-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5,
+        "order": [[ 0, "desc" ]]
+    })
+});
+$(document).ready(function () {
+    $('#invoicecs-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5,
+        "order": [[ 0, "desc" ]]
+    })
+});
+$(document).ready(function () {
+    $('#ordernonppn-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5,
+        "order": [[ 0, "asc" ]]
+    })
+});
+$(document).ready(function () {
+    $('#orderppn-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5,
+        "order": [[ 0, "asc" ]]
+    })
+});
+$(document).ready(function () {
+    $('#myppn-table').DataTable({
+    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5,
+        "order": [[ 0, "asc" ]]
     })
 });
 
@@ -30,6 +99,38 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#produk-table').DataTable();
 });
+$(document).ready(function () {
+    $('#slider-table').DataTable();
+});
+
+$.fn.DataTable.ext.pager.numbers_length = 3;
+$.fn.DataTable.ext.pager.full_numbers_no_ellipses = function (e, r) { var a = [], n = $.fn.DataTable.ext.pager.numbers_length, t = Math.floor(n / 2), l = function (e, r) { var a; void 0 === r ? (r = 0, a = e) : (a = r, r = e); for (var n = [], t = r; t < a; t++)n.push(t); return n }; return (a = r <= n ? l(0, r) : e <= t ? l(0, n) : e >= r - 1 - t ? l(r - n, r) : l(e - t, e + t + 1)).DT_el = "span", ["first", "previous", a, "next", "last"] };
+
+// Notification
+// trigger notification
+function notification(target, time) {
+    var a = "#" + target;
+    $(".notification-box").removeClass("show");
+    setTimeout(() => {
+        $(a).addClass("show");
+    }, 300);
+    if (time) {
+        time = time + 300;
+        setTimeout(() => {
+            $(".notification-box").removeClass("show");
+        }, time);
+    }
+};
+// close button notification
+$(".notification-box .close-button").click(function (event) {
+    event.preventDefault();
+    $(".notification-box.show").removeClass("show");
+});
+// tap to close notification
+$(".notification-box.tap-to-close .notification-dialog").click(function () {
+    $(".notification-box.show").removeClass("show");
+});
+///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
 // Fix for # href
@@ -539,3 +640,24 @@ dmswitch.on('change', function () {
 });
 ///////////////////////////////////////////////////////////////////////////
 
+// slider
+
+$(document).ready(function () {
+    // Ganti slide setiap 2 detik
+    $('#carouselExampleCaptions').carousel({
+        interval: 2000,
+        ride: 'carousel' // Enable automatic cycling
+    });
+
+    // Trigger next slide when clicking the "Next" button
+    $('.carousel-control-next').click(function() {
+        $('#carouselExampleCaptions').carousel('next');
+    });
+
+    // Trigger previous slide when clicking the "Prev" button
+    $('.carousel-control-prev').click(function() {
+        $('#carouselExampleCaptions').carousel('prev');
+    });
+});
+
+//slider

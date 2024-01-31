@@ -21,6 +21,7 @@ use App\Http\Controllers\SponsorRequestController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BrochureController;
+use App\Http\Controllers\PengirimanController;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\File;
 
@@ -87,6 +88,8 @@ Route::post('/slider', [SliderController::class, 'store'])->name('slider.store')
 Route::get('/slider/{id}/edit', [SliderController::class, 'edit'])->name('slider.edit');
 Route::put('/slider/{id}', [SliderController::class, 'update'])->name('slider.update');
 Route::delete('/slider/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
+
+Route::get('/pengiriman', [PengirimanController::class, 'index']);
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
@@ -159,6 +162,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:superadmin']], function () {
     });
     Route::get('/add/nondanppn', [HomeController::class, 'invoicenondanppn']);
     Route::get('/menuinvoice', [HomeController::class, 'allinvoice']);
+    Route::get('/menuorder', [HomeController::class, 'invoicenondanppnapp']);
 
     Route::group(['prefix' => 'invoiceppn'], function () {
         Route::get('/', [InvoiceppnController::class, 'index'])->name('invoiceppn.index');
@@ -467,7 +471,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:superadmin,marketing']], functi
         
     });
     Route::get('/add/nondanppn', [HomeController::class, 'invoicenondanppn']);
-
+    Route::get('/menuorder', [HomeController::class, 'invoicenondanppnapp']);
+    
     Route::group(['prefix' => 'invoiceppn'], function () {
         Route::get('/', [InvoiceppnController::class, 'index'])->name('invoiceppn.index');
         Route::get('/new', [InvoiceppnController::class, 'create'])->name('invoiceppn.create');

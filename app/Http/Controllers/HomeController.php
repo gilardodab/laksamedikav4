@@ -52,6 +52,13 @@ class HomeController extends Controller
         $invoiceppn = Invoiceppn::where('total', 0)->where('user_id', Auth::user()->id)->get();
         return view('invoicenondanppn', compact('invoice', 'invoiceppn'));
     }
+    public function invoicenondanppnapp()
+    {
+        $customers = Customer::orderBy('created_at', 'DESC')->get();
+        $invoice = Invoice::where('total', 0)->where('user_id', Auth::user()->id)->get();
+        $invoiceppn = Invoiceppn::where('total', 0)->where('user_id', Auth::user()->id)->get();
+        return view('beranda.menuorder', compact('invoice', 'invoiceppn','customers'));
+    }
 
     public function notif()
     {
@@ -63,6 +70,12 @@ class HomeController extends Controller
         $invppn = Invoiceppn::with('customer')->where('status', 0)->where('total', '!=', 0)->orderBy('id', 'desc')->get();
         return view('notifppn', compact('invppn'));
     }
+
+    public function notifikasi(){
+        
+        return view('notifikasi', compact(''));
+    }
+
     public function notifProduct()
     {
         $product = Product::where('stock', '<=', 5)->get();
@@ -114,6 +127,18 @@ class HomeController extends Controller
         return view('beranda.beranda', compact('sliders'));
     }
 
+    public function allinvoice()
+    {
+        $allinvoiceppn  = Invoiceppn::with(['user', 'customer', 'detailppn'])->orderBy('created_at', 'DESC')->get();;
+        $allinvoice  = Invoice::with(['user', 'customer', 'detail'])->orderBy('created_at', 'DESC')->get();;
+        $invoicecustomerall = Invoice_customer::with(['user', 'detail_customer'])->orderBy('created_at', 'DESC')->get();;
+        return view('beranda.menuinvoice', compact('allinvoice','allinvoiceppn','invoicecustomerall'));
+        // Logika untuk menampilkan data invoice non PPN
+        // return view('beranda.menuinvoice');
 
+    }
+    public function order(){
+
+    }
 
 }

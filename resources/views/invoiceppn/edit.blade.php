@@ -77,7 +77,7 @@
                                             <td>Price</td>
                                             <td>Diskon</td>
                                             <td>Subtotal</td>
-                                            <th>Action</th>
+                                            <th>Hapus</th>
                                         </tr>
                                     </thead>
                                     

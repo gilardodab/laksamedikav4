@@ -1,12 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
+@include('layouts.topNavBack')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <b class="card-title">Add Kondisi & Harga</b>
+                        <b class="card-title">Tambahkan Kondisi & Harga</b>
                     </div>
                     <div class="card-body">
                         @if (session('error'))
@@ -16,15 +17,18 @@
                         @endif
                         <div class="card-body">
                             @if (session('success'))
-                                <div class="alert alert-success">
+                                <div class="alert alert-success mb-2 alert-dismissible fade show" role="alert">
                                     {!! session('success') !!}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <ion-icon name="close-outline"></ion-icon>
+                                    </button>
                                 </div>
                             @endif
                             <table class="table table-hover table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Kondisi</th>
-                                        <th>Action</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,10 +74,10 @@
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
+                                    <th>Produk</th>
+                                    <th>Harga</th>
                                     <th>Quantity</th>
-                                    <th>Action</th>
+                                    <th>aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -113,7 +117,7 @@
                                 @csrf
                                 <label for="">Produk</label><br>
                                 <select class="js-example-basic-single" id="product_id" name="product_id" class="form-control">
-                                    <option value="">-- Select --</option>
+                                    <option value="">-- Pilih Produk --</option>
                                     @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->title }}
                                     </option>

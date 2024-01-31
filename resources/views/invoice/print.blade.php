@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
         body{
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
             color:#333;
             text-align:left;
             font-size:12px;
@@ -34,9 +34,9 @@
             width:700px;
         }
         td, tr, th{
-            padding:5px;
+            padding:7px;
             border:1px solid #333;
-            width:100px;
+            width:auto;
         }
         th{
             background-color: #fff;
@@ -44,7 +44,6 @@
         h4, p{
             margin:0px;
         }
-        
         .page_break { page-break-before: always; }
     </style>
 </head>
@@ -57,13 +56,13 @@
             </caption>
             <thead>
                  <tr>
-                    <td colspan="2" align="left">
+                    <td colspan="1" align="left">
                         <!--<h4>Dari</h4>-->
                         <p>PT Laksa Medika Internusa<br>
                            Pelem Lor No.50 Bantul Yogyakarta<br>
                         </p>
                     </td>
-                    <td colspan="3">
+                    <td colspan="4">
                         <!--<h4>Untuk : </h4>-->
                         <p>{{ $invoice->customer->name }}<br>
                         {{ $invoice->customer->address }}<br>
@@ -79,6 +78,8 @@
                     <th colspan="1">Marketing#{{ $invoice->user->name }}</th>
                 </tr>
             </thead>
+        </table><br>
+        <table>
             <tbody>
                 <tr>
                     <th align ="center">Product</th>
@@ -90,9 +91,9 @@
                 @foreach ($invoice->detail as $row)
                 <tr>
                     <td>{{ $row->product_detail->product->title }}</td>
-                    <td align ="right">Rp {{ number_format($row->price) }}</td>
+                    <td align ="left">Rp {{ number_format($row->price) }}</td>
                     <td align ="center">{{ $row->qty }}</td>
-                    <td align ="right">Rp {{ number_format($row->diskon) }}</td>
+                    <td align ="left">Rp {{ number_format($row->diskon) }}</td>
                     <td align ="right">Rp {{ $row->subtotal }}</td>
                 </tr>
                 @endforeach
@@ -117,8 +118,8 @@
                     <th colspan="3" align="center">Hormat Kami</th>
             </tr>
              <tr>
-                    <td colspan="2" align="center"><br>(....................)</td>
-                    <td colspan="3" align="center"><br>(Fatma WA)</td>
+                    <td colspan="2" align="center"><br><br>(....................)</td>
+                    <td colspan="3" align="center"><br><br>(Fatmawaty Aripin)</td>
             </tr>
             </tfoot>
         </table>
@@ -168,7 +169,7 @@
             </tr>
              <tr>
                     <td colspan="2" align="center"><br><br>(....................)</td>
-                    <td colspan="3" align="center"><br><br>(Fatma WA)</td>
+                    <td colspan="3" align="center"><br><br>(Fatmawaty Aripin)</td>
             </tr>
             </tfoot>
         </Table>
@@ -230,11 +231,11 @@
                         <span><b>Rp {{ number_format(floor($invoice->total_price)) }}</b></span>
                     </p>
                     <p align="right" style="font-size: 14px; margin:5px; height:5%">
-                        Yogyakarta,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Laksa Internusa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Yogyakarta,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>PT. Laksa Medika Internusa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <!--{{ $invoice->created_at->format('D, d M Y') }}-->
                     </p><br><br><br><br><br>
                     <p align="right" style="font-size: 14px; margin:5px;">
-                        (Fatma WA)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        (Fatmawaty Aripin)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
             </tr>
         </table>
@@ -281,7 +282,7 @@
             </tr>
              <tr>
                     <td colspan="1" align="center"><br><br>(....................)</td>
-                    <td colspan="2" align="center"><br><br>(Dwi)</td>
+                    <td colspan="2" align="center"><br><br>(Puspita Tara Wahyuningsih)</td>
             </tr>
             </tfoot>
             
@@ -326,8 +327,8 @@
                     {{-- {{ date('d F Y') }} --}}
             </tr>
              <tr>
-                    <td colspan="1" align="center"><br><br>( Santok )</td>
-                    <td colspan="2" align="center"><br><br>(Dwi)</td>
+                    <td colspan="1" align="center"><br><br>( Drajad Dwi Haryoko )</td>
+                    <td colspan="2" align="center"><br><br>(Puspita Tara Wahyuningsih)</td>
             </tr>
             </tfoot>
             

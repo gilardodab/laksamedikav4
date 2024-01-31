@@ -20,4 +20,8 @@ class Daily_report_marketing extends Model
         //Invoice reference ke table customers
         return $this->hasMany(Daily_report_marketing_detail::class);
     }
+    public function details()
+{
+    return $this->hasMany(Daily_report_marketing_detail::class, 'daily_report_marketing_id');
+}
 }

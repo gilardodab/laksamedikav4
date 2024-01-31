@@ -1,17 +1,18 @@
-<!-- resources/views/slider/index.blade.php -->
-@extends('layouts.app')
-
+@extends('layouts.master')
 @section('content')
+    @include('layouts.topNavBack')
     <h1>Daftar Slider</h1>
     <a href="{{ route('slider.create') }}" class="btn btn-success">Tambah Slider</a>
+    <div class="card">
+    
+        <table class="table table-hover table-bordered" id="slider-table" class="table" cellspacing="0" width="100%">
 
-    <table class="table mt-3">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Image</th>
+                <th>Image Size 1920x600</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -22,7 +23,7 @@
                     <td>{{ $slider->title }}</td>
                     <td>{{ $slider->description }}</td>
                     <td>
-                        <img src="{{ asset('images/slider/' . $slider->image) }}" alt="Slider Image"  >
+                        <img src="{{ asset('images/slider/' . $slider->image) }}" alt="Slider Image" style=" width:200px" >
                     </td>
                     <td>
                         <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-primary">Edit</a>
@@ -37,4 +38,5 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 @endsection

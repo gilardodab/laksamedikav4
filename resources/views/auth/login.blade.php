@@ -35,7 +35,7 @@
             </div>
             <div class="section mt-1">
                 <h1>Laksa Medika</h1>
-                <h4>Silahkan Login...</h4>
+                {{-- <h4>Silahkan Login...</h4> --}}
             </div>
             <div class="section mt-1 mb-5">
                 <form method="POST" action="{{ route('login') }}">
@@ -83,9 +83,9 @@
                 
                     <div class="form-links mt-2">
                         <div>
-                            <a href="{{ route('register') }}">Register Now</a>
+                            <a href="{{ route('register') }}">Daftar Sekarang</a>
                         </div>
-                        <div><a href="{{ route('password.request') }}" class="text-muted">Forgot Password?</a></div>
+                        <div><a href="{{ route('password.request') }}" class="text-muted">Lupa Password?</a></div>
                     </div>
 
                     <div class="form-button-group">

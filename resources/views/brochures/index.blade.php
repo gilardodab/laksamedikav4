@@ -21,7 +21,7 @@
                                             {{-- <th>ID</th> --}}
                                             <th>Judul Brosur</th>
                                             {{-- <th>File</th> --}}
-                                            <th>Aksi</th>
+                                            <th >Edit | Hapus | Download</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -30,7 +30,8 @@
                                                 {{-- <td>{{ $brochure->id }}</td> --}}
                                                 <td align="center">{{ $brochure->title }}</td>
                                                 {{-- <td>{{ $brochure->file_path }}</td> --}}
-                                                <td align="center">
+                                                
+                                                <td>
                                                     <a href="{{ route('brochures.edit', $brochure->id) }}" class="btn btn-warning btn-sm"><span class="mdi mdi-pencil-box mdi-18"></span></a>
                                                     <form action="{{ route('brochures.destroy', $brochure->id) }}" method="POST"
                                                         style="display: inline;">

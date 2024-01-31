@@ -36,7 +36,7 @@
         td, tr, th{
             padding:5px;
             border:1px solid #333;
-            width:100px;
+            width:auto;
         }
         th{
             background-color: #fff;
@@ -77,6 +77,8 @@
                     <th colspan="1">Marketing#{{ $invoice->user->name }}</th>
                 </tr>
             </thead>
+                    </table><br>
+        <table>
             <tbody>
                 <tr>
                     <th align ="center">Product</th>

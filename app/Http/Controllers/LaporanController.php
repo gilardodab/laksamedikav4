@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Invoice;
 use App\Models\Invoiceppn;
 use App\Models\Customer;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class LaporanController extends Controller
 {

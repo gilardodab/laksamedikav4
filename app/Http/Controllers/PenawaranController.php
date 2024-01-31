@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Penawaran;
 use App\Models\Product;
 use App\Models\User;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
 class PenawaranController extends Controller
@@ -60,7 +60,7 @@ class PenawaranController extends Controller
                 'penawaran_id' => $penawarans->id,
             ]);
             //REDIRECT KEMBALI KE HALAMAN /PRODUCT DENGAN FLASH MESSAGE SUCCESS
-            return redirect()->route('detail.penawaran', $penawarans->id)->with(['success' => '<strong>' . $penawarans->customer . '</strong> Telah dibuat']);
+            return redirect()->route('detail.penawaran', $penawarans->id)->with(['success' => '<strong>' . $penawarans->customer . '</strong> Penawaran Telah dibuat']);
         } catch (\Exception $e) {
             //APABILA TERDAPAT ERROR MAKA REDIRECT KE FORM INPUT
             //DAN MENAMPILKAN FLASH MESSAGE ERROR

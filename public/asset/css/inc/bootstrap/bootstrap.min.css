@@ -26,6 +26,7 @@
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
+  --black: #000000;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -57,6 +58,10 @@
 
 .purple {
   color: var(--purple);
+}
+
+.black {
+  color: var(--black);
 }
 
 .danger {
@@ -515,6 +520,8 @@ pre code {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+  padding-top: 40px;
+  padding-bottom: 80px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -9524,4 +9531,5 @@ a.text-dark:hover {
     border-color: #dee2e6;
   }
 }
+
 /*# sourceMappingURL=bootstrap.min.css.map */

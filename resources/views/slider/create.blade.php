@@ -15,7 +15,7 @@
             <textarea class="form-control" id="description" name="description"></textarea>
         </div>
         <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
+            <label for="image" class="form-label">Image Size 1920x600</label>
             <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>

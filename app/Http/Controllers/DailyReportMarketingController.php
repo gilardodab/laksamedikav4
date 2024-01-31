@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Daily_report_marketing;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Daily_report_marketing_detail;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DailyReportMarketingController extends Controller
 {
@@ -136,10 +136,24 @@ class DailyReportMarketingController extends Controller
 
     public function printdailyreportmkt($id)
     {
-        $details = Daily_report_marketing_detail::where('daily_report_marketing_id', $id)->where('tujuan', '!=', null)->orderBy('created_at', 'DESC')->get();
-        $dailyreportmkts = Daily_report_marketing::where('id', $id)->first();
-        // CODE DIATAS SAMA DENGAN > select * from `products` order by `created_at` desc 
-        $pdf = PDF::loadView('daily_report_marketing.print', compact('dailyreportmkts', 'details'))->setPaper('a4', 'potrait');
+        // Use find instead of first for better performance
+        $dailyreportmkts = Daily_report_marketing::find($id);
+    
+        if (!$dailyreportmkts) {
+            abort(404); // Or handle the case where the record is not found
+        }
+    
+        // Use eloquent relationship to load details
+        $details = $dailyreportmkts->details()
+            ->where('tujuan', '!=', null)
+            ->orderBy('created_at', 'desc')
+            ->get();
+    
+        // Load the view and pass the data
+        $pdf = PDF::loadView('daily_report_marketing.print', compact('dailyreportmkts', 'details'))
+            ->setPaper('a4', 'portrait');
+    
+        // Stream the PDF to the browser
         return $pdf->stream();
     }
 }

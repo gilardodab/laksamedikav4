@@ -146,30 +146,31 @@
                                 <div class="col-md-6">
                                     <form action="{{ url('/invoice/simpan/pengiriman', ['id' => $invoice->id]) }}" method="post">
                                         @csrf
-                                    <div class="form-group">
-                                        <br/>
-                                        <label for="">Product</label>
-                                        <input type="hidden" name="_method" value="PUT" class="form-control">
-                                        <select name="invoice_detail_id" id="product_ajax" class="form-control">
-                                            <option value="">Select Product</option>
-                                            @foreach ($invoice->detail as $detail)
-                                            {{-- @if($detail->id == $invoice->product_detail_id) --}}
-                                            <option value="{{ $detail->id }}"> {{ $detail->product_detail->product->title}}
-                                            </option>
-                                            {{-- @endif --}}
-                                            @endforeach
-                                          
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Quantity Pengiriman</label>
-                                        <input type="number" id="qty" name="qty" class="form-control" placeholder="Jumlah yang akan dikirim">                        
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary btn-sm">Kirim Produk</button>
-                                    </div>
+                                        <div class="form-group">
+                                            <br/>
+                                            <label for="">Product</label>
+                                            <input type="hidden" name="_method" value="PUT" class="form-control">
+                                            <select name="invoice_detail_id" id="product_ajax" class="form-control">
+                                                <option value="">Select Product</option>
+                                                @foreach ($invoice->detail as $detail)
+                                                    <option value="{{ $detail->id }}"> {{ $detail->product_detail->product->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Quantity Pengiriman</label>
+                                            <input type="number" id="qty" name="qty" class="form-control" placeholder="Jumlah yang akan dikirim">                        
+                                        </div>
+                                        
+                                        <!-- Tambahkan input hidden untuk status -->
+                                        <input type="hidden" name="status" value="Sedang Dikirim">
+                                
+                                        <div class="form-group">
+                                            <button class="btn btn-primary btn-sm">Kirim Produk</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>

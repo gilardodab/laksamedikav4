@@ -1,12 +1,13 @@
 @extends('layouts.master')
-@include('layouts.topNavBack')
+
 @section('content')
+@include('layouts.topNavBack')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <b class="card-title">Add Daily Report Marketing</b>
+                        <b class="card-title">Tambah Marketing</b>
                     </div>
                     <div class="card-body">
                         @if (session('error'))

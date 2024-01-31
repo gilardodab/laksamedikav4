@@ -1,6 +1,6 @@
 @extends('layouts.master')
-
 @section('content')
+@include('layouts.topNavBack')
     <div class="container">
         <div class="row">
             <div class="col-md-12">

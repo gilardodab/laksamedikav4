@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Panduancode Cetak laporan PDF Di PHP Dan MySQLi</title>
+ <title>Laporan Gudang GSI</title>
 </head>
 <body>
  <style type="text/css">

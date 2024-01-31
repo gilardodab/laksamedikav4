@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
         body{
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
             color:#333;
             text-align:left;
             font-size:12px;
@@ -34,9 +34,9 @@
             width:700px;
         }
         td, tr, th{
-            padding:5px;
+            padding:7px;
             border:1px solid #333;
-            width:100px;
+            width:auto;
         }
         th{
             background-color: #fff;
@@ -78,34 +78,60 @@
                     <th colspan="1">Marketing#{{ $invoice->user->name }}</th>
                 </tr>
             </thead>
+        </table><br>
+        <table>
             <tbody>
                 <tr>
-                    <th align ="center">Product</th>
-                    <th align ="center">Price</th>
-                    <th align ="center">Qty</th>
-                    <th align ="center">Diskon</th>
-                    <th align ="center">Subtotal</th>
+                    <th align="center">Product</th>
+                    <th align="center">Price</th>
+                    <th align="center">Qty</th>
+                    <th align="center">Diskon</th>
+                    <th align="center">Subtotal</th>
                 </tr>
+            
                 @foreach ($invoice->detail as $row)
                 <tr>
-                    <td>{{ $row->product_detail->product->title }}</td>
-                    <td align ="right">Rp {{ number_format($row->price) }}</td>
-                    <td align ="center">{{ $row->qty }}</td>
-                    <td align ="right">Rp {{ number_format($row->diskon) }}</td>
-                    <td align ="right">Rp {{ $row->subtotal }}</td>
+                    <td>
+                        @if ($row->product_detail && $row->product_detail->product)
+                            {{ $row->product_detail->product->title }}
+                        @else
+                            N/A
+                        @endif
+                    </td>
+                    <td align="left">Rp {{ number_format($row->price) }}</td>
+                    <td align="center">{{ $row->qty }}</td>
+                    <td align="left">Rp {{ number_format($row->diskon) }}</td>
+                    <td align="right">Rp {{ $row->subtotal }}</td>
                 </tr>
                 @endforeach
+            
+                @php
+                    $productCount = count($invoice->detail);
+                    $emptyRows = max(5 - $productCount, 0);
+                @endphp
+            
+                @for ($i = 0; $i < $emptyRows; $i++)
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @endfor
+            
                 <tr>
                     <th colspan="4">Subtotal</th>
-                    <td align ="right">Rp {{ number_format(floor($invoice->total)) }}</td>
+                    <td align="right">Rp {{ number_format(floor($invoice->total)) }}</td>
                 </tr>
                 <tr>
                     <th>Tax</th>
                     <td></td>
                     <td colspan="2">0%</td>
-                    <td align ="right">Rp {{ number_format($invoice->tax) }}</td>
+                    <td align="right">Rp {{ number_format($invoice->tax) }}</td>
                 </tr>
             </tbody>
+            
             <tfoot>
                 <tr>
                     <th colspan="4">Total Price</th>
@@ -117,7 +143,7 @@
             </tr>
              <tr>
                     <td colspan="2" align="center"><br><br>(....................)</td>
-                    <td colspan="3" align="center"><br><br>(Fatma WA)</td>
+                    <td colspan="3" align="center"><br><br>(Fatmawaty Aripin)</td>
             </tr>
             </tfoot>
         </table>
@@ -167,7 +193,7 @@
             </tr>
              <tr>
                     <td colspan="2" align="center"><br><br>(....................)</td>
-                    <td colspan="3" align="center"><br><br>(Fatma WA)</td>
+                    <td colspan="3" align="center"><br><br>(Fatmawaty Aripin)</td>
             </tr>
             </tfoot>
         </Table>
@@ -229,11 +255,11 @@
                         <span><b>Rp {{ number_format(floor($invoice->total_price)) }}</b></span>
                     </p>
                     <p align="right" style="font-size: 14px; margin:5px; height:5%">
-                        Yogyakarta,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Laksa Internusa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Yogyakarta,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>PT. Laksa Medika Internusa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <!--{{ $invoice->created_at->format('D, d M Y') }}-->
                     </p><br><br><br><br><br>
                     <p align="right" style="font-size: 14px; margin:5px;">
-                        (Fatma WA)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        (Fatmawaty Aripin)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
             </tr>
         </table>
@@ -246,7 +272,7 @@
             <th colspan="3">
                 <h1 align="center">SURAT JALAN BARANG</h1>
                 <p align="center" style="font-size: 12px;">No. {{ $invoice->no_faktur_2023}}</p>
-                <p align="left" style="font-size: 12px;">Telah Terima dari CV.Laksa Internusa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p align="left" style="font-size: 12px;">Telah Terima dari CV.PT. Laksa Medika Internusa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $invoice->created_at->format('D, d M Y') }}</h3> 
             </th>
@@ -275,12 +301,12 @@
             <tfoot>
                 <tr>
                     <td colspan="1"align="center">Penerima</td>
-                    <td colspan="2"align="center">CV.Laksa Internusa<br>Admin Logistik</td>
+                    <td colspan="2"align="center">PT. Laksa Medika Internusa<br>Admin Logistik</td>
                     {{-- {{ date('d F Y') }} --}}
             </tr>
              <tr>
                     <td colspan="1" align="center"><br><br>(....................)</td>
-                    <td colspan="2" align="center"><br><br>(Dwi)</td>
+                    <td colspan="2" align="center"><br><br>(Puspita Tara Wahyuningsih)</td>
             </tr>
             </tfoot>
             
@@ -325,8 +351,8 @@
                     {{-- {{ date('d F Y') }} --}}
             </tr>
              <tr>
-                    <td colspan="1" align="center"><br><br>( Santok )</td>
-                    <td colspan="2" align="center"><br><br>(Dwi)</td>
+                    <td colspan="1" align="center"><br><br>( Drajad Dwi Haryoko )</td>
+                    <td colspan="2" align="center"><br><br>(Puspita Tara Wahyuningsih)</td>
             </tr>
             </tfoot>
             

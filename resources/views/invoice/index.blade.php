@@ -23,13 +23,13 @@
                             <thead>
                                 <tr>
                                     <th>No Invoice</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Marketing</th>
                                     <th>Total Item</th>
                                     <th>Subtotal</th>
                                     <th>Tax</th>
                                     <th>Total Price</th>
-                                    <th><center>Action</center></th>
+                                    <th><center>Aksi</center></th>
                                     <th>Status</th>
                                 </tr>
                             </thead>

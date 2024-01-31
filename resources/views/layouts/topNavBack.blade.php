@@ -1,6 +1,6 @@
 
     <!-- App Header -->
-    <div class="appHeader bg-dark text-light">
+    <div class="appHeader bg-purple text-light">
         <div class="left">
             <a href="javascript:;" class="headerButton goBack">
                 <ion-icon name="chevron-back-outline"></ion-icon>

@@ -1,5 +1,5 @@
  <!-- App Header -->
- <div class="appHeader bg-dark text-light">
+ <div class="appHeader bg-purple text-light">
     <div class="left">
         <a href="#" class="headerButton" data-toggle="modal" data-target="#sidebarPanel">
             <ion-icon name="menu-outline"></ion-icon>
@@ -25,7 +25,6 @@
                                         <a class="nav-link" aria-current="page" href="#">Produk
                                             <span id="product-alert" class=" badge badge-pill badge-danger">{{$productalert}}</span>
                                         </a>
-    
                                     </li>
                                     <li class="nav-item list-invoices">
                                         <a class="nav-link" href="#">Invoice
@@ -38,11 +37,9 @@
                                         </a>
                                     </li>
                                 </ul>
-                                <div class="order-notification" style="overflow: auto; max-height:400px;">
+                                <div class="order-notification" style="overflow: auto; max-height:450px; ">
                                 <!-- All-->
-                                <a href="javascript:void(0);" class="dropdown-item text-center notify-all text-primary">
-                                        View all <i class="fi-arrow-right"></i>
-                                    </a>
+                               
                             </div>
                         </li>
                     @endif
@@ -97,7 +94,16 @@
                                     $(this).children('.nav-link').addClass('active')
                                     
                                 })
-                            
+                                // Fungsi untuk menyembunyikan dropdown saat diklik di luar
+                                document.addEventListener('click', function(event) {
+                                    var notifDropdown = document.getElementById('notif');
+                                    
+                                    // Periksa apakah yang diklik bukan elemen dari dropdown
+                                    if (!notifDropdown.contains(event.target)) {
+                                        // Jika tidak, sembunyikan dropdown
+                                        notifDropdown.classList.remove('show');
+                                    }
+                                });
                             });
                             </script>
     <div class="right">

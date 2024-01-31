@@ -2,6 +2,7 @@
 
 @section('content')
 @include('layouts.topNavBack')
+{{-- @include('layouts.maintenance') --}}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -19,17 +20,20 @@
                                 {!! session('success') !!}
                             </div>
                         @endif
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-hover table-bordered" id="myppn-table" class="table" cellspacing="0" width="100%">
+
                             <thead>
                                 <tr>
                                     <th>No Invoice</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Marketing</th>
                                     <th>Total Item</th>
                                     <th>Subtotal</th>
                                     <th>Tax</th>
-                                    <th>Total Price</th>
-                                    <th><center>Action</center></th>
+                                    <th>Total</th>
+                                    <th><center>Print</center></th>
+                                    <th><center>Edit</center></th>
+                                    <th><center>Hapus</center></th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -45,13 +49,24 @@
                                         <td>Rp {{ number_format($invoices->total) }}</td>
                                         <td>Rp {{ number_format($invoices->tax) }}</td>
                                         <td>Rp {{ number_format($invoices->total_price) }}</td>
-                                        <td>
+                                        <td> 
                                             <form class="btn-group" action="{{ route('invoiceppn.destroy', $invoices->id) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <a href="{{ route('invoiceppn.print', $invoices->id) }}" class="btn btn-secondary btn-sm"><i class="mdi mdi-printer"></i></a>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form class="btn-group" action="{{ route('invoiceppn.destroy', $invoices->id) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
                                                 <a href="{{ route('invoiceppn.edit', $invoices->id) }}" class="btn btn-warning btn-sm"><i class="mdi mdi-pencil"></i></a>
-                                                {{-- <a href="{{ route('invoiceppn.print2', $invoices->id) }}" class="btn btn-success btn-sm"><i class="mdi mdi-printer"></i></a> --}}
+                                            </form>      
+                                        </td>
+                                        <td>
+                                            <form class="btn-group" action="{{ route('invoiceppn.destroy', $invoices->id) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
                                                 <button class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus faktur ini?')"><i class="mdi mdi-trash-can"></i></button>
                                             </form>
                                         </td>

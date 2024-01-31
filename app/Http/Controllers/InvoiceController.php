@@ -184,22 +184,30 @@ class InvoiceController extends Controller
 
     public function generateInvoice($id)
     {
-        //GET DATA BERDASARKAN ID
         $invoice = Invoice::with(['customer', 'detail', 'detail.product_detail.product'])->find($id);
-        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
-        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
-        //setPaper([0, 0, 396.85, 623.62], 'landscape');
-        $pdf = PDF::loadView('invoice.print', compact('invoice'))->setPaper('a4', 'potrait');
-        return $pdf->stream();
+        // Format nomor invoice
+        $noInvoice = 'INVOICE-' . $invoice->no_faktur_2023;
+        // Nama customer
+        $customerName = str_replace(' ', '_', $invoice->customer->name);
+        // Nama file PDF dengan nomor invoice dan nama customer
+        $fileName = $noInvoice . '_' . $customerName . '.pdf';
+        $pdf = PDF::loadView('invoice.print', compact('invoice'))->setPaper('a4', 'portrait');
+        // Untuk menampilkan PDF di browser
+        return $pdf->stream($fileName);
     }
+    
     public function generateInvoice2($id)
     {
-        //GET DATA BERDASARKAN ID
         $invoice = Invoice::with(['customer', 'detail', 'detail.product_detail.product'])->find($id);
-        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
-        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
-        $pdf = PDF::loadView('invoice.print2', compact('invoice'))->setPaper('a4', 'potrait');
-        return $pdf->stream();
+        // Format nomor invoice
+        $noInvoice = 'INV-' . $invoice->no_faktur_2023;
+        // Nama customer
+        $customerName = str_replace(' ', '_', $invoice->customer->name);
+        // Nama file PDF dengan nomor invoice dan nama customer
+        $fileName = $noInvoice . '_' . $customerName . '.pdf';
+        $pdf = PDF::loadView('invoice.print2', compact('invoice'))->setPaper('a4', 'portrait');
+        // Untuk menampilkan PDF di browser
+        return $pdf->stream($fileName);
     }
     
     public function pengiriman($id)
@@ -214,32 +222,22 @@ class InvoiceController extends Controller
     {
         // dd($request->all());
         
-
-        try {
             $invoice = Invoice::find($id);
             $invoice_detail = Invoice_detail::find($request->invoice_detail_id);
             // dd($invoice_detail->product_detail_id);
             $pengirimans = Pengiriman::where('invoice_detail_id', $invoice_detail->id)->first();
-            if ($pengirimans) {
-                $pengirimans->update([
-                    'qty' => $pengirimans->qty + $request->qty,
-                ]);
-            } else {
+
                 Pengiriman::create([
                     'invoice_id' => $invoice->id,
                     'product_detail_id' => $invoice_detail->product_detail_id,
                     //'product_id' => $request->product_id,
                     'invoice_detail_id' => $request->invoice_detail_id,
                     'qty' => $request->qty,
+                    'status'=>$request->status,
                 ]);
-            }
-            $invoice_detail->qty -= $request->qty;
             $invoice_detail->save();
 
             return redirect()->back()->with(['success' => 'Product Telah Dikirim']);
-        } catch (\Exception $e) {
-            return redirect()->back()->with(['error' => $e->getMessage()]);
-        }
     }
 
     public function deletepengiriman($id)
@@ -248,9 +246,9 @@ class InvoiceController extends Controller
         // dd($pengirimans);
         $details = Invoice_detail::find($pengirimans->invoice_detail_id);
         // dd($details);
-        $details->update([
-            'qty'=>$details->qty+$pengirimans->qty
-        ]);
+        // $details->update([
+        //     'qty'=>$details->qty+$pengirimans->qty
+        // ]);
         $pengirimans->delete();
         
         return redirect()->back()->with(['success' => 'Product telah dihapus']);

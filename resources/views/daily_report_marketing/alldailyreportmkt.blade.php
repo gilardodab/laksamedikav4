@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-6">
-                                <b class="card-title">Daily Report Marketing</b>
+                                <b class="card-title">Laporan Harian Marketing</b>
                             </div>                 
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                                     <th>Customer</th>
                                     <th>Marketing</th>
                                     <th>Update</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

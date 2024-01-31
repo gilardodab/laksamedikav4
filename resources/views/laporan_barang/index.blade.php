@@ -19,7 +19,7 @@
                                 {!! session('success') !!}
                             </div>
                         @endif
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-hover table-bordered" id="lapbarang-table" class="table" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>Name</th>

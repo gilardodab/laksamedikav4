@@ -4,7 +4,7 @@
     <!-- Bootstrap-->
     <script src="{{ URL::asset('asset/js/lib/popper.min.js')}}"></script>
     <script src="{{ URL::asset('asset/js/lib/bootstrap.min.js')}}"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"> --}}
 
 
 </head>
@@ -20,7 +20,6 @@
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
         <!-- Add DataTables.js JS -->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-    
+    {{-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script> --}}
     <!-- Base Js File -->
     <script src="{{ URL::asset('asset/js/base.js')}}"></script>

@@ -3,7 +3,7 @@
 @section('content')
 @include('layouts.topNavBack')
     <div class="container">
-        <div class="row " style="margin-top: 2cm; margin-bottom: 2cm">
+        <div class="row " >
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -13,7 +13,7 @@
                             </div>
                             {{-- @if(auth()->user()->level=="") --}}
                             <div class="col-md-6">
-                                <a href="{{ url('/product/new') }}" class="btn btn-primary btn-sm float-right"><i class="mdi mdi-plus-box mdi-18px"></i>Product</a>
+                                <a href="{{ url('/product/new') }}" class="btn btn-primary btn-sm float-right"><i class="mdi mdi-plus-box mdi-18px"></i>Produk</a>
                             </div>
                             {{-- @endif --}}
                             <div class="col-md-6">
@@ -68,7 +68,7 @@
                                         </form>
                                         {{-- <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalStock{{ $product->id }}"> --}}
                                             <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalStock{{ $product->id }}">
-                                            <i class="mdi mdi-database-plus"></i>
+                                                <i class="mdi mdi-loupe"></i>
                                         </button>
                                     </td>
                                 </tr>

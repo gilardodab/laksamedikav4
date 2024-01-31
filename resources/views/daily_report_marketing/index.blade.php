@@ -1,6 +1,6 @@
 @extends('layouts.master')
-
 @section('content')
+@include('layouts.topNavBack')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -11,13 +11,7 @@
                                 <b class="card-title">Daily Report Marketing</b>
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ url('/daily-report-marketing/new') }}" class="btn btn-primary btn-sm float-right">Add Report</a>
-                            </div>
-                            <div class="col-md-6">
-                                <form action="{{ route('cari.dailyreportmkt') }}" method="GET" class="form-inline">
-                                  <input class="form-control mr-sm-2" name="cari" type="search" placeholder="Search" aria-label="Search" value="{{ old('cari') }}">
-                                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                </form>
+                                <a href="{{ url('/daily-report-marketing/new') }}" class="btn btn-primary btn-sm float-right"> Report</a>
                             </div>                      
                         </div>
                     </div>
@@ -28,7 +22,8 @@
                                 {!! session('success') !!}
                             </div>
                         @endif
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-hover table-bordered" id="dailyreport-table" class="table" cellspacing="0" width="100%">
+
                             <thead>
                                 <tr>
                                     <th>Customer</th>
@@ -67,9 +62,6 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        <div class="float-right">
-                            {{ $dailyreportmkts->links() }}
-                        </div>
                     </div>
                     </div>
                 </div>

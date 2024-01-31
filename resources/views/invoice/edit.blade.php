@@ -23,12 +23,12 @@
                                         <td>{{ $invoice->customer->name }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Address</td>
+                                        <td>Alamat</td>
                                         <td>:</td>
                                         <td>{{ $invoice->customer->address }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Phone</td>
+                                        <td>No. HP</td>
                                         <td>:</td>
                                         <td>{{ $invoice->customer->phone }}</td>
                                     </tr>
@@ -47,12 +47,12 @@
                                         <td>PT Laksa Medika Internusa</td>
                                     </tr>
                                     <tr>
-                                        <td>Address </td>
+                                        <td>Alamat </td>
                                         <td>:</td>
                                         <td>Pelem Lor No.50 Bantul Yogyakarta</td>
                                     </tr>
                                     <tr>
-                                        <td>Phone</td>
+                                        <td>No. Hp</td>
                                         <td>:</td>
                                         <td> 0274-4436047</td>
                                     </tr>
@@ -72,11 +72,11 @@
                                         <tr>
                                             <td>#</td>
                                             <td>Product</td>
-                                            <td>Quantity</td>
-                                            <td>Price</td>
+                                            <td>Jumlah</td>
+                                            <td>Harga</td>
                                             <td>Diskon</td>
                                             <td>Subtotal</td>
-                                            <th>Action</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     
@@ -114,10 +114,10 @@
                                     @csrf
                                 <div class="form-group">
                                     <br/>
-                                    <label for="">Product</label>
+                                    <label for="">Produk</label>
                                     <input type="hidden" name="_method" value="PUT" class="form-control">
                                     <select name="product_detail_id" id="product_ajax" class="form-control">
-                                        <option value="">Select Product</option>
+                                        <option value="">Pilih Produk</option>
                                         @foreach ($details as $detail)
                                         @if($detail->customer_id == $invoice->customer_id)
                                         <option value="{{ $detail->id }}"> {{ $detail->product->title}}
@@ -128,16 +128,16 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Quantity</label>
+                                    <label for="">Jumlah</label>
                                     <div id="qtyProduct"></div>
-                                    <input type="number" id="qty" name="qty" class="form-control" placeholder="Qty">                        
+                                    <input type="number" id="qty" name="qty" class="form-control" placeholder="Isi Jumlah Produk">                        
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" value="{{ date('Y-m-d H:i:s', time() + (60*60*24*31)) }}" name="tenggat" class="form-control" >
                                 </div>
                                 <div class="form-group">
                                     <label for="">Diskon</label>
-                                    <input type="text" name="diskon" class="form-control" placeholder="Miss: 100000">
+                                    <input type="text" name="diskon" class="form-control" placeholder="Misal: 100000">
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" value="{{ date('Y-m-d H:i:s', time()) }}" name="tanggal" class="form-control" >
@@ -146,7 +146,7 @@
                                     <input type="hidden" value="{{ Auth::user()->id }}" name="user_id" class="form-control" >
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-sm">Buat Faktur</button>
+                                    <button class="btn btn-primary btn-block">Tambah</button>
                                 </div>
                             </div>
                             </form>
@@ -154,24 +154,18 @@
                             
                             <!-- MENAMPILKAN TOTAL & TAX -->
                             <div class="col-md-4 offset-md-8">
-                                <table class="table table-hover table-bordered">
-                                    <tr>
-                                        <td>Sub Total</td>
-                                        <td>:</td>
-                                        <td>Rp {{ number_format($invoice->total) }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tax</td>
-                                        <td>:</td>
-                                        <td>0% (Rp {{ number_format($invoice->tax) }})</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Total Price</td>
-                                        <td>:</td>
-                                        <td>Rp {{ number_format($invoice->total_price) }}</td>
-                                    </tr>
-                                </table>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sub Total</h5>
+                                        <p class="card-text">Rp {{ number_format($invoice->total) }}</p>
+                                        <h5 class="card-title">Tax</h5>
+                                        <p class="card-text">0% (Rp {{ number_format($invoice->tax) }})</p>
+                                            <h5 class="card-title">Total Harga</h5>
+                                        <p class="card-text">Rp {{ number_format($invoice->total_price) }}</p>
+                                    </div>
+                                </div>
                             </div>
+                            
                             <!-- MENAMPILKAN TOTAL & TAX -->
                         </div>
                     </div>
